@@ -1,0 +1,24 @@
+<html lang="en">
+<head>
+    <title>Lifecycle</title>
+    <script>
+        class MyCustomTag extends HTMLElement {
+            constructor() {
+                super();
+                console.log('from MyCustomTag constructor');
+                //this.innerHTML = '<h2>' + this.getAttribute('title') + '</h2><button>click me</button>';
+                console.log('from constructor', this.getAttribute('title'));
+            }
+
+            connectedCallback() {
+                console.log('from MyCustomTag connectd callback');
+                //this.innerHTML = '<h2>' + this.getAttribute('title') + '</h2><button>click me</button>';
+                console.log('from connected callback', this.getAttribute('title'));
+            }
+        }
+
+        if (!customElements.get('my-custom-tag')) {
+            customElements.define('my-custom-tag', MyCustomTag);
+        }
+    </script>
+</html>

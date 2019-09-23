@@ -1,0 +1,34 @@
+<html>
+    <body>
+        <template id="button">
+            <button>Click Me</button>
+            <p>
+                This is a template with a button 
+            </p>
+        </template>
+
+        <template id="textfield">
+            <label>Enter</label>
+            <input type="text">
+            <p>
+                This is a template with a text input
+            </p>
+        </template>
+
+        <template id = "list">
+            <ul>
+                <li>Item 1</li>
+                <li>Item 2</li>
+                <li>Item 3</li>
+                <li>Item 4</li>
+                <li>Item 5</li>
+            </ul>
+        </template>
+
+        <script>
+            const template = document.getElementById('button');
+            const clone = template.content.cloneNode(true);
+            document.body.appendChild(clone);
+        </script>
+    </body>
+</html>
