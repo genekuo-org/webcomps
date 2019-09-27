@@ -1,13 +1,15 @@
-export default class BizCard extends HTMLElement {
-    static get observedAttributes() { 
-        return ['layout']; 
-    }
+import Template from './template.js';
 
-    attributeChangedCallback(name, oldvalue, newvalue) {
-        this.innerHTML = '';
-        const template = document.getElementById(newvalue);
-        const clone = template.content.cloneNode(true);
-        this.appendChild(clone);
+class BizCard extends HTMLElement {
+    connectedCallback() {
+        this.innerHTML = Template.render({
+            first_name: 'Emmett',
+            last_name: 'Brown',
+            title: 'Student of all Sciences',
+            phone: '555-4385',
+            email: 'emmett@docbrown.flux',
+            website: 'www.docbrown.flux'
+        });
     }
 }
 

@@ -8,8 +8,17 @@ export default class WebHarpApp extends HTMLElement {
     }
 
     onMouseMove(event) {
-        this.stringsElement.points = { last: this.lastPoint, current: { x: event.pageX, y: event.pageY } };
-        this.lastPoint = { x: event.pageX, y: event.pageY };
+        this.stringsElement.points = { 
+            last: this.lastPoint, 
+            current: { 
+                x: event.pageX, 
+                y: event.pageY 
+            } 
+        };
+        this.lastPoint = { 
+            x: event.pageX, 
+            y: event.pageY 
+        };
     }
 }
 

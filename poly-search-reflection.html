@@ -24,6 +24,16 @@
                 return ['searchterm'];
             }
 
+            get searchTerm() {
+                console.log("get");
+                return this.getAttribute('searchTerm');
+            }
+
+            set searchTerm(val) {
+                console.log("set");
+                this.setAttribute('searchTerm', val);
+            }
+
             attributeChangedCallback(name, oldval, newval) {
                 if (name === 'searchterm') {
                     this.doSearch();
@@ -34,7 +44,7 @@
                 if (this.getAttribute('apiKey') && this.getAttribute('searchTerm')) {
                     const url = this.getAttribute('baseuri') + '?keywords=' + this.getAttribute('searchTerm') + '&format=' + this.getAttribute('format') + '&key=' + this.getAttribute('apiKey');
                     const request = new XMLHttpRequest();
-                    request.open( 'GET', url, true );
+                    request.open('GET', url, true);
                     request.addEventListener( 'load', (event) => {
                         this.renderResults(JSON.parse(event.target.response).assets);
                     });
@@ -82,13 +92,13 @@
 
 <script>
     function updatePolySearch(event) {
-        document.querySelector('poly-search').setAttribute('searchTerm', event.target.value);
+        document.querySelector('poly-search').searchTerm = event.target.value;
     }
 </script>
 <poly-search apikey=""
              format="OBJ"
-             thumbheight="90"
-             backgroundcolor="blue"
+             thumbheight="50"
+             backgroundcolor="red"
              baseuri="https://poly.googleapis.com/v1/assets"
              searchterm="parrot">
 </poly-search>
